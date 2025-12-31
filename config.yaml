@@ -1,0 +1,30 @@
+
+
+chunking:
+  strategies:
+    - fixed
+    - semantic
+
+retrieval:
+  strategies:
+    - dense
+    - bm25
+    - hybrid
+
+query_optimization:
+  strategies:
+    - none
+    - rewrite
+    - multi_query
+    - self_reflection
+
+evaluation:
+  metrics:
+    - answer_relevance
+    - context_precision
+    - context_recall
+    - faithfulness
+
+modes:
+  - online   # adaptive inference
+  - offline  # benchmarking

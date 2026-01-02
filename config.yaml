@@ -1,15 +1,32 @@
-
+documents:
+  data_dir: datasets
+  file_types: ["txt", "pdf", "docx", "csv", "xlsx"]
+  encoding: utf-8
 
 chunking:
-  strategies:
-    - fixed
-    - semantic
+  strategy: adaptive   # fixed | semantic | adaptive
+
+  fixed:
+    chunk_size: 512
+    overlap: 50
+
+  semantic:
+    max_sentences: 5
+
+  adaptive:
+    chunk_size: 512
+    overlap: 100
 
 retrieval:
-  strategies:
-    - dense
-    - bm25
-    - hybrid
+  strategy: hybrid     # dense | bm25 | hybrid
+  top_k: 5
+
+  dense:
+    embedding_model: sentence-transformers/all-MiniLM-L6-v2
+    vector_store: faiss
+
+  hybrid:
+    alpha: 0.5
 
 query_optimization:
   strategies:
@@ -26,5 +43,5 @@ evaluation:
     - faithfulness
 
 modes:
-  - online   # adaptive inference
-  - offline  # benchmarking
+  - online
+  - offline

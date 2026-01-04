@@ -1,0 +1,13 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Local datasets
+datasets/
+
+# Environment files
+.env
+
+# OS files
+.DS_Store
+Thumbs.db

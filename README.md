@@ -61,3 +61,24 @@ This allows experimentation and benchmarking without code changes.
 - Research-friendly architecture
 
 This layer is evaluation-ready and integrates cleanly with downstream RAG pipelines.
+## Day 5 – RAG Evaluation (RAGAS)
+
+This project integrates an evaluation layer using **RAGAS** to measure:
+
+- Answer relevancy
+- Context precision
+- Context recall
+- Faithfulness (hallucination detection)
+
+### Note on Hugging Face Evaluation
+RAGAS metrics rely on asynchronous LLM-based judgment.  
+While the evaluation pipeline executes end-to-end using Hugging Face Inference API,  
+current async incompatibilities may result in `NaN` metric values.
+
+This is a known limitation when using Hugging Face endpoints for RAGAS evaluation.
+The evaluation layer is structurally complete and can be switched to OpenAI/Azure
+for numeric scoring when required.
+
+**Key takeaway:**  
+The system supports evaluation, detects hallucination pathways, and exposes
+clear failure modes — which is critical for production RAG systems.

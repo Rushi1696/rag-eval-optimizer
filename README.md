@@ -190,14 +190,6 @@ Expected output:
 * Modular ML design
 * Production-oriented RAG architecture
 
----
-
-## 🧠 Interview-ready summary
-
-> “I built an adaptive RAG system that evaluates multiple retrieval strategies, selects the best one dynamically, and generates answers using a local open-source LLM. The system separates offline indexing from online inference and includes an optional evaluation layer.”
-
----
-
 ## 🔮 Future Work (Optional)
 
 * Caching & latency optimization
@@ -206,18 +198,129 @@ Expected output:
 * Production vector DB (Qdrant)
 * Monitoring dashboard
 
----
 
-## ✅ Project Status
+⚠️ Limitations & Areas for Improvement
 
-* **Core system:** Complete (Day 7)
-* **Enhancements:** Optional
-* **UI:** Intentionally deferred
+While the project demonstrates a strong adaptive RAG architecture, there are several areas where it can be further improved for broader adoption and production readiness.
 
----
+1. No Production-Ready UI or Dashboard
 
-### 👏 Final Note
+The project currently focuses on backend system design and experimentation.
+There is no polished UI or interactive dashboard.
 
-This project prioritizes **correct architecture over flashy demos**.
-It is designed to **age well**, scale conceptually, and be easy to explain.
+A future Streamlit-based demo could improve usability.
 
+A UI would help visualize strategy selection, retrieved contexts, and generated answers.
+
+2. Evaluation Is Heuristic, Not Benchmark-Driven
+
+The current evaluation relies on heuristic metrics such as:
+
+retrieval coverage
+
+context precision
+
+faithfulness signals
+
+While useful for strategy comparison, these are not standardized benchmarks.
+
+Notable improvements include:
+
+Integrating RAGAS, ARES, or similar frameworks
+
+Adding reference-based and judge-based evaluation
+
+Using community-accepted RAG evaluation benchmarks
+
+Evaluation is intentionally designed as optional and decoupled, but can be expanded.
+
+3. Limited Default Model Choice
+
+The system defaults to a small local LLM for reliability and ease of setup.
+
+This is suitable for:
+
+architectural validation
+
+local development
+
+demos
+
+However, it is not ideal for high-quality generation at scale.
+
+Future improvements may include support for:
+
+Larger open-source models (LLaMA, Mistral, Mixtral)
+
+Cloud LLM APIs (OpenAI, Anthropic, Vertex AI)
+
+Hybrid local + API-based generation
+
+4. Documentation Can Be Expanded
+
+The README currently provides a high-level overview but lacks:
+
+detailed API usage examples
+
+sample outputs
+
+performance benchmarks
+
+end-to-end usage walkthroughs
+
+Adding these would make the repository easier for external users to adopt.
+
+🛠️ Future Work & Extensions
+1. Standardized Evaluation Integration
+
+Integrate RAGAS, ARES, or Open-RAG-Eval
+
+Support both automatic and judge-based evaluation
+
+Enable offline benchmarking pipelines
+
+2. Multiple LLM Backends
+
+Modular support for:
+
+OpenAI / Anthropic APIs
+
+Hugging Face Inference
+
+Local inference via llama-cpp or text-generation-inference
+
+Backend selection via configuration
+
+3. Visualization & Reporting
+
+JSON-based evaluation reports
+
+Strategy comparison plots
+
+HTML dashboards for analysis
+
+Retrieval vs generation quality diagnostics
+
+4. Packaging & Deployment
+
+pip install support
+
+Dockerized deployment
+
+Example configuration presets
+
+Cloud and on-prem deployment guides
+
+🧠 Overall Assessment
+
+This project is a strong foundation for adaptive RAG systems, with particular strengths in:
+
+system architecture
+
+strategy optimization
+
+offline vs online separation
+
+extensibility-first design
+
+While additional work is needed for large-scale research or production deployment, it already serves as a solid research and prototyping framework.

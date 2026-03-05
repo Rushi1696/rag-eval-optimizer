@@ -3,6 +3,10 @@ Example: Using the new RAGPipeline class
 This is the modern way to use the system.
 """
 
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from app.rag import RAGPipeline, load_documents
 
 # Load documents from datasets folder

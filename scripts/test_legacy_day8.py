@@ -3,6 +3,10 @@ Legacy Test: Day 8 - Adaptive Pipeline with Strategy Selection
 Updated to use new modular structure
 """
 
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from app.rag import adaptive_pipeline, load_documents
 from app.rag.chunking import FixedSizeChunker, SemanticAdaptiveChunker
 from app.retrieval import DenseRetriever, BM25Retriever, HybridRetriever

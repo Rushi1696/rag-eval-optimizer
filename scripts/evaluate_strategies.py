@@ -2,6 +2,10 @@
 Example: Evaluating different retrieval strategies
 """
 
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from app.rag import RAGPipeline, load_documents
 from app.optimization import StrategySelector
 

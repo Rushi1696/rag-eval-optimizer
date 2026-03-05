@@ -3,6 +3,10 @@ Script: Build RAG Index from documents
 Pre-processes documents and creates retrieval indexes for efficient querying.
 """
 
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from app.rag import RAGPipeline, load_documents
 
 def build_index(

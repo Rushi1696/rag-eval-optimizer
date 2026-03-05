@@ -1,5 +1,3 @@
-# app/strategy_selector.py
-
 from typing import Dict, List
 import math
 

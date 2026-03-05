@@ -1,3 +1,10 @@
+from app.optimization.query_optimizer import (
+    QueryRewriter,
+    MultiQueryGenerator,
+    SelfReflectionQueryAgent,
+)
+
+
 class RetrieverRouter:
     """
     Routes queries to the correct retriever based on strategy.

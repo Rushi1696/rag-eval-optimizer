@@ -76,9 +76,12 @@ The system **measures, compares, and decides** — automatically.
 ```
 
 **API Endpoints:**
+- `GET /health` - Service health check
+- `POST /initialize` - Initialize RAG pipeline
 - `POST /query` - Ask questions, get answers
 - `POST /evaluate` - Evaluate answer quality
-- `GET /health` - Service health check
+- `GET /strategies` - List available retrieval strategies
+- `POST /strategies/{strategy}` - Switch retrieval strategy
 - `GET /docs` - Auto-generated API documentation
 
 ---
@@ -145,11 +148,16 @@ curl -X POST http://localhost:8000/query \
   -d '{"question": "What is self-attention?"}'
 ```
 
-### **4. Run Docker (Production)**
+### **4. Test the API**
 ```bash
-docker build -t rag-system .
-docker run -p 8000:8000 rag-system
+python scripts/test_api.py
 ```
+
+**Expected Output:**
+- ✅ Health check working
+- ✅ Pipeline initialization successful
+- ✅ Query returning answers
+- ✅ All endpoints responding
 
 ---
 

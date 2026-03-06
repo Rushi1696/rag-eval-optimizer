@@ -9,6 +9,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from app.rag import adaptive_pipeline, load_documents
 from app.rag.chunking import FixedSizeChunker, SemanticAdaptiveChunker
+from app.rag.generator import RAGGenerator
 from app.retrieval import DenseRetriever, BM25Retriever, HybridRetriever
 
 def test_adaptive_pipeline():
@@ -75,6 +76,19 @@ def test_adaptive_pipeline():
     for i, ctx in enumerate(result['contexts'][:2], 1):
         print(f"\n  Context [{i}]:")
         print(f"  {ctx[:100]}...")
+
+    # Generate answer from retrieved contexts
+    print("\n" + "="*70)
+    print("GENERATING ANSWER")
+    print("="*70)
+    
+    generator = RAGGenerator(model_name="google/flan-t5-base")
+    answer = generator.generate(query, result['contexts'])
+    
+    print(f"\n❓ Query: {query}")
+    print(f"📝 Answer: {answer}")
+    print(f"📊 Quality Score: {result['score']:.4f}")
+    print("\n" + "="*70)
 
 if __name__ == "__main__":
     test_adaptive_pipeline()

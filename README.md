@@ -136,28 +136,29 @@ python scripts/generate_answer_demo.py
 📊 Metrics: Coverage: 0.33, Faithfulness: 1.00
 ```
 
-### **3. Start FastAPI Server**
+### **3. Start Simple API Server**
 ```bash
-python -m uvicorn app.api:app --host 0.0.0.0 --port 8000 --reload
-```
-
-**Test API:**
-```bash
-curl -X POST http://localhost:8000/query \
-  -H "Content-Type: application/json" \
-  -d '{"question": "What is self-attention?"}'
+python -m uvicorn app.simple_api:app --host 0.0.0.0 --port 8000
 ```
 
 ### **4. Test the API**
 ```bash
-python scripts/test_api.py
+python scripts/test_simple_api.py
 ```
 
 **Expected Output:**
 - ✅ Health check working
-- ✅ Pipeline initialization successful
 - ✅ Query returning answers
-- ✅ All endpoints responding
+- ✅ Processing time ~2-3 seconds
+
+### **5. Run with Docker**
+```bash
+# Build image
+docker build -t simple-rag-api .
+
+# Run container
+docker run -p 8000:8000 simple-rag-api
+```
 
 ---
 
